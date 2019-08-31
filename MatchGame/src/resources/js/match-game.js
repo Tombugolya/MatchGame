@@ -4,7 +4,13 @@ var MatchGame = {};
   Sets up a new game after HTML document has loaded.
   Renders a 4x4 board of cards.
 */
-$(document).ready(MatchGame.renderCards(MatchGame.generateCardValues(), ('#game')));
+
+$(document).ready(function() {
+  var $game = $('#game');
+  var values = MatchGame.generateCardValues();
+  MatchGame.renderCards(values, $game);
+});
+
 /*
   Generates and returns an array of matching card values.
  */
@@ -30,20 +36,28 @@ MatchGame.generateCardValues = function () {
 
 MatchGame.renderCards = function(cardValues, $game) {
   var colors = ['hsl(25, 85%, 65%)',
-'hsl(55, 85%, 65%)',
-'hsl(90, 85%, 65%)',
-'hsl(160, 85%, 65%)',
-'hsl(220, 85%, 65%)',
-'hsl(265, 85%, 65%)',
-'hsl(310, 85%, 65%)',
-'hsl(360, 85%, 65%)',];
+                'hsl(55, 85%, 65%)',
+                'hsl(90, 85%, 65%)',
+                'hsl(160, 85%, 65%)',
+                'hsl(220, 85%, 65%)',
+                'hsl(265, 85%, 65%)',
+                'hsl(310, 85%, 65%)',
+                'hsl(360, 85%, 65%)'];
+  
   $game.empty();
-  for (var i=0 ; i<cardValues.length ; i++){
-    var $card = ( '<div class="card col-xs-3"></div>' );
-    $card.data( 'value', cardValues[i] );
-    $card.data( 'isFlipped', false);
-    $card.data( 'color', colors[cardValues[i] - 1]);
-    $game.append($card);
+  $game.data('flippedCards', []);
+  
+  for (var i = 0 ; i < cardValues.length ; i++){
+    var value = cardValues[i];
+    var color = colors[value - 1];
+    var data = {
+      value: value,
+      color: color,
+      isFlipped: false
+    };
+    var $cardElement = $('<div class="card col-xs-3"></div>');
+    $cardElement.data(data);
+    $game.append($cardElement);
   }
 };
 
@@ -53,5 +67,15 @@ MatchGame.renderCards = function(cardValues, $game) {
  */
 
 MatchGame.flipCard = function($card, $game) {
-
+  if ($card.data('isFlipped')){
+    return;
+  }
+  
+  $card.css('background-color', $card.data('color'))
+    .text($card.data('value'))
+    .data('isFlipped', false);
+  
+  var flippedCards = $game.data('flippedCards');
+  flippedCards.push($card);
+    
 };

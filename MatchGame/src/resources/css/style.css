@@ -25,6 +25,10 @@ h5 {
   background-color: rgb(32, 64, 86);
   border: 4px solid #fff;
   border-radius: 0.5rem;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  font-size: 7rem;
+  font-weight: 900;
   height: 12.5rem;
   
   /*  Display */
@@ -32,11 +36,4 @@ h5 {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.card span {
-  color: rgb(255, 255, 255);
-  cursor: pointer;
-  font-size: 7rem;
-  font-weight: 900;
 }
