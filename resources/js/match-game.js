@@ -69,7 +69,7 @@ MatchGame.renderCards = function(cardValues, $game) {
   Flips over a given card and checks to see if two cards are flipped over.
   Updates styles on flipped cards depending whether they are a match or not.
  */
-
+var overallFlipped = [];
 MatchGame.flipCard = function($card, $game) {
   if ($card.data('isFlipped')){
     return;
@@ -89,6 +89,10 @@ MatchGame.flipCard = function($card, $game) {
       flippedCards[0].css("background-color", "rgb(153, 153, 153)");
       flippedCards[1].css("color", "rgb(204, 204, 204)");
       flippedCards[1].css("background-color", "rgb(153, 153, 153)");
+      overallFlipped.push(1, 1);
+      if (overallFlipped.length === 16){
+          play("win");
+          }
     } else {
       window.setTimeout(function(){
       flippedCards[0].css("background-color", "rgb(32 ,64 ,86)")
