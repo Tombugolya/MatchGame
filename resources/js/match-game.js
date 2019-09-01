@@ -104,7 +104,6 @@ MatchGame.flipCard = function($card, $game) {
         play("unflip");
       }
       $game.data('flippedCards', []);
-      
   }
 };
 
