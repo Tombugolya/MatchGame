@@ -75,13 +75,14 @@ MatchGame.flipCard = function($card, $game) {
     return;
   }
   
+  play("flip");
   $card.css('background-color', $card.data('color'))
     .text($card.data('value'))
     .data('isFlipped', true);
   
   var flippedCards = $game.data('flippedCards');
   flippedCards.push($card);
-    
+  
   if (flippedCards.length === 2){
     if (flippedCards[0].data('value') == flippedCards[1].data('value')){
       flippedCards[0].css("color", "rgb(204, 204, 204)");
@@ -95,8 +96,19 @@ MatchGame.flipCard = function($card, $game) {
         .data("isFlipped", false);
       flippedCards[1].css("background-color", "rgb(32,64,86)")
         .text(" ")
-        .data("isFlipped", false);}, 150);
+        .data("isFlipped", false);}, 350);
+        play("unflip");
       }
       $game.data('flippedCards', []);
+      
   }
 };
+
+/*
+    Sound effects
+*/
+
+function play(id) {
+    var audio = document.getElementById(id);
+    audio.play();
+}
