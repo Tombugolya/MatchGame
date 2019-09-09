@@ -27,12 +27,17 @@ h2 {
 }
 
 .button {
+  background-color: rgba(90, 242, 191, 0.56);
   display: flex;
   justify-content: center;
   margin: 1rem auto;
   width: 7rem;
-  border: 1px solid black;
   cursor: pointer;
+  transition: all 500ms linear 0s;
+}
+
+.button:hover {
+  background-color: rgba(90, 242, 191, 1);
 }
 
 .button h2 {

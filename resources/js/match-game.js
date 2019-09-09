@@ -87,7 +87,7 @@ MatchGame.flipCard = function($card, $game) {
     if (flippedCards[0].data('value') == flippedCards[1].data('value')){
       flippedCards[0].css("color", "rgb(204, 204, 204)");
       flippedCards[0].css("background-color", "rgb(153, 153, 153)");
-      flippedCards[1].css("color", "rgb(204, 204, 204)");
+      flippedCards[1].css("color", "rgb(20  4, 204, 204)");
       flippedCards[1].css("background-color", "rgb(153, 153, 153)");
       overallFlipped.push(1, 1);
       if (overallFlipped.length === 16){
