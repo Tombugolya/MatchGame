@@ -26,6 +26,18 @@ h2 {
   font-weight: bold;
 }
 
+.button {
+  display: flex;
+  justify-content: center;
+  margin: 1rem auto;
+  width: 7rem;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.button h2 {
+    margin-top: 10px;
+}
 .container {
   padding-top: 5.25rem;
 }
